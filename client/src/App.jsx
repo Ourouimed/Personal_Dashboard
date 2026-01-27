@@ -1,7 +1,11 @@
+import RouterProvider from "../providers/RouterProvider"
+
+
 const App = ()=>{
-  return <h1>
-    Welcome medamine
-  </h1>
+  return <>
+        <RouterProvider/>
+    
+  </>
 }
 
 export default App
