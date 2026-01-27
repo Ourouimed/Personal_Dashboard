@@ -3,6 +3,10 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import connectDB from './config/db.js';
+// import routes
+import authRouter from './routes/Auth.js'
+import corsOptions from './middlewares/corsOption.js';
+import cookieParser from 'cookie-parser';
 
 
 const app = express()
@@ -13,11 +17,18 @@ const PORT = process.env.PORT || 5000;
 // Connect to Database
 connectDB();
 
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
+app.use(cookieParser())
+
+
+// define routes 
+app.use('/api/auth' , authRouter)
+
+
+
 
 app.get('/', (req, res) => {
-    createUser()
     res.json({})
 })
 
