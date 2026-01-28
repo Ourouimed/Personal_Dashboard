@@ -10,6 +10,7 @@ const Login = ()=>{
     })
 
     const [errors , setErrors] = useState({})
+    const [errorMsg , setErrorMsg] = useState(null)
 
 
     const dispatch = useDispatch()
@@ -49,9 +50,10 @@ const Login = ()=>{
     const handleLogin = async ()=>{
         if (!validationErrors()) return null;
         try {
-            await dispatch(loginUser(loginForm))
+            await dispatch(loginUser(loginForm)).unwrap()
         }
         catch (err){
+            setErrorMsg(err || 'Unknown error')
             console.log(err)
         }
     }
@@ -98,6 +100,10 @@ const Login = ()=>{
                 disabled={isLoading}>
                     {isLoading ? 'Login in...' : 'Login'}
             </button>
+
+            {errorMsg && <p className="rounded-md bg-red-500/20 p-4 border border-red-500 text-red-500 font-semibold">
+                {errorMsg}
+            </p>}
 
         </div>
 
