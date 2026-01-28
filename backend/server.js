@@ -5,6 +5,9 @@ import dotenv from 'dotenv';
 import connectDB from './config/db.js';
 // import routes
 import authRouter from './routes/Auth.js'
+import projectRouter from './routes/Projects.js'
+
+
 import corsOptions from './middlewares/corsOption.js';
 import cookieParser from 'cookie-parser';
 
@@ -24,6 +27,7 @@ app.use(cookieParser())
 
 // define routes 
 app.use('/api/auth' , authRouter)
+app.use('/api/projects' , projectRouter)
 
 
 
