@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { loginUser, verifySession } from "../store/features/auth/authSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
+import { styles } from "../lib/styles"
 
 const Login = ()=>{
     const [loginForm , setLoginForm] = useState({
@@ -67,10 +68,10 @@ const Login = ()=>{
             </h3>
 
             <div className="space-y-2">
-                <label htmlFor="email" className="text-gray-500 font-semibold">Email</label>
+                <label htmlFor="email" className={styles.label}>Email</label>
                 <input 
                         id='email' 
-                        className="py-2 px-4 rounded-lg border border-gray-300 w-full"
+                        className={styles.input}
                         onChange={handleChange}
                         value={loginForm.email}/>
                     {errors?.email && <p className="text-red-500 text-xs">
@@ -80,10 +81,10 @@ const Login = ()=>{
 
 
             <div className="space-y-2">
-                <label htmlFor="password" className="text-gray-500 font-semibold">Password</label>
+                <label htmlFor="password" className={styles.label}>Password</label>
                 <input 
                     id='password' 
-                    className="py-2 px-4 rounded-lg border border-gray-300 w-full"
+                    className={styles.input}
                     onChange={handleChange}
                     value={loginForm.password}/>
                  {errors?.password && <p className="text-red-500 text-xs">

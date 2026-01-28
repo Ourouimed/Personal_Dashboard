@@ -36,17 +36,17 @@ const DashboardLayout = () => {
     return (
         <section className="flex flex-col md:flex-row bg-gray-100 min-h-screen relative">
             
-            {/* MOBILE OVERLAY */}
+            
             {sidebarOpen && (
                 <div 
-                    className="fixed inset-0 bg-black/50 z-[40] md:hidden" 
+                    className="fixed inset-0 bg-black/50 z-9 md:hidden" 
                     onClick={() => setSidebarOpen(false)}
                 />
             )}
 
             {/* SIDEBAR */}
             <aside className={`
-                fixed md:sticky top-0 left-0 h-screen bg-white shadow-xl z-[50] 
+                fixed md:sticky top-0 left-0 h-screen bg-white shadow-xl z-9
                 transition-all duration-300 ease-in-out flex flex-col
                 ${sidebarOpen ? 'w-[250px] translate-x-0' : 'w-[70px] -translate-x-full md:translate-x-0'}
             `}>
