@@ -2,20 +2,20 @@ import { useState, useRef } from "react";
 import { X, Plus, Image as ImageIcon, UploadCloud, AlertCircle, Loader2 } from "lucide-react";
 import { styles } from "../../lib/styles";
 import { useDispatch, useSelector } from "react-redux";
-import { addProject } from "../../store/features/projects/projectSlice";
+import { updateProject } from "../../store/features/projects/projectSlice";
 
-const AddProjectPopup = ({ onClose }) => {
+const UpdateProjectPopup = ({ project ,  onClose }) => {
   const [projectInfo, setProjectInfo] = useState({
-    title: '',
-    description: '',
-    category: 'frontend', 
-    link: '',
-    github: '',
-    image: null,
-    tech: [] 
+    title: project.title || "",
+    description: project.description || '',
+    category: project.category || 'frontend', 
+    link: project.link || '',
+    github: project.github || '',
+    image: project.image || null,
+    tech: project.tech || [] 
   });
 
-  const [imagePreview, setImagePreview] = useState(''); 
+  const [imagePreview, setImagePreview] = useState(project.image); 
   const [errors, setErrors] = useState({});
   const [currentTech, setCurrentTech] = useState('');
 
@@ -78,7 +78,7 @@ const AddProjectPopup = ({ onClose }) => {
     setProjectInfo(prev => ({ ...prev, tech: prev.tech.filter((_, i) => i !== index) }));
   };
 
-  const handleAddProject = async (e) => {
+  const handleUpdateProject = async (e) => {
     if (!validateForm()) return;
 
     const formData = new FormData();
@@ -91,7 +91,7 @@ const AddProjectPopup = ({ onClose }) => {
     projectInfo.tech.forEach(t => formData.append("tech", t));
 
     try {
-        await dispatch(addProject(formData)).unwrap()
+        await dispatch(updateProject({...projectInfo, id : project._id})).unwrap()
         onClose();
     }
     catch (err) {
@@ -196,7 +196,7 @@ const AddProjectPopup = ({ onClose }) => {
           Cancel
         </button>
         <button 
-            onClick={handleAddProject} 
+            onClick={handleUpdateProject} 
             disabled={isLoading}
             className={styles.button}
         >
@@ -208,4 +208,4 @@ const AddProjectPopup = ({ onClose }) => {
   );
 }
 
-export default AddProjectPopup;
+export default UpdateProjectPopup;

@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux"
 import { getAllProjects } from "../store/features/projects/projectSlice"
 import ProjectItem from "../components/cards/ProjectItem"
 import { styles } from "../lib/styles"
+import DeleteProjectPopup from "../components/popus-forms/DeleteProjectPopup"
+import UpdateProjectPopup from "../components/popus-forms/UpdateProjectPopup"
 
 const Projects = ()=>{
     const [popupData , setPopupData] = useState({
@@ -28,6 +30,14 @@ const Projects = ()=>{
         setPopupData({isOpen : true , title : 'Add new project' , content : <AddProjectPopup onClose={handleClosePopup}/>})
     }
 
+    const handleOpenDeleteProjectPopup = (id)=>{
+        setPopupData({isOpen : true , title : 'Delete project' , content : <DeleteProjectPopup id={id} onClose={handleClosePopup}/>})
+    }
+
+
+    const handleOpenUpdateProjectPopup = (p)=>{
+        setPopupData({isOpen : true , title : 'Update project' , content : <UpdateProjectPopup onClose={handleClosePopup} project={p}/>})
+    }
 
     
     return <>
@@ -46,7 +56,7 @@ const Projects = ()=>{
 
         {isLoading ? 'Loading projects...' : projects.length === 0 ? 'No available projects': (
   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 py-1 gap-4">
-    {projects.map((p) => <ProjectItem item={p} key={p._id}/>)}
+    {projects.map((p) => <ProjectItem item={p} key={p._id} onDelete={()=> handleOpenDeleteProjectPopup(p._id)} onUpdate={()=> handleOpenUpdateProjectPopup(p)}/>)}
   </div>
 )}
     </>

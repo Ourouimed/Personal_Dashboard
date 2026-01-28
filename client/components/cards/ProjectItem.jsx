@@ -1,6 +1,6 @@
 import { ExternalLink, Github } from "lucide-react";
 import { styles } from "../../lib/styles";
-const ProjectItem = ({ item }) => {
+const ProjectItem = ({ item , onDelete , onUpdate}) => {
   return (
     <div className="p-3 rounded-lg bg-white shadow-lg flex flex-col justify-between">
       <div>
@@ -49,10 +49,10 @@ const ProjectItem = ({ item }) => {
         </div>
 
         <div className="flex items-center gap-2">
-          <button className={styles.button}>
+          <button className={styles.button} onClick={onUpdate}>
             update
           </button>
-          <button className={`${styles.button} !bg-red-500 text-white`}>
+          <button className={`${styles.button} !bg-red-500 text-white`} onClick={onDelete}>
             delete
           </button>
         </div>
