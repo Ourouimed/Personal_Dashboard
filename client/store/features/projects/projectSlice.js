@@ -78,7 +78,7 @@ const projectSlice = createSlice({
         console.log(action.payload)
     }) 
 
-    // delete project
+        // delete project
         .addCase(deleteProject.pending, (state) => {
             state.isLoading = true;
         })
@@ -91,7 +91,7 @@ const projectSlice = createSlice({
             state.isLoading = false;
             console.log(action.payload)
         })
- // update Project
+        // update Project
         .addCase(updateProject.pending, (state) => {
             state.isLoading = true;
         })

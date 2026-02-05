@@ -6,8 +6,8 @@ const Popup = ({ title = '', onClose, children }) => {
 
   return (
     <div 
-      className="fixed inset-0 z-50 p-4 md:p-10 bg-black/70 flex items-center justify-center backdrop-blur-sm"
-      onClick={onClose} // Close when clicking backdrop
+      className="fixed inset-0 z-50 p-4 md:p-10 bg-black/70 flex items-center justify-center backdrop-blur-sm min-h-screen"
+      onClick={onClose} 
       role="dialog"
       aria-modal="true"
     >

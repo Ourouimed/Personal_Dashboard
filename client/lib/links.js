@@ -1,4 +1,4 @@
-import { Briefcase, LayoutDashboard, List } from 'lucide-react'
+import { Briefcase, LayoutDashboard, List, Timer } from 'lucide-react'
 export const sidebar = [
     {
         name : 'Dashboard' ,
@@ -14,5 +14,10 @@ export const sidebar = [
         name : 'Projects' ,
         icon : Briefcase ,
         url : '/projects'
+    },
+    {
+        name : 'Timeline' ,
+        icon : Timer ,
+        url : '/timeline'
     },
 ]
