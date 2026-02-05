@@ -81,8 +81,7 @@ const updateProject = async (req , res)=>{
       })
 
 
-      console.log(project)
-      res.json({message : 'Project updated successfully' , project : project})
+      res.json({message : 'Project updated successfully' , project})
     }
 
      catch (err){
