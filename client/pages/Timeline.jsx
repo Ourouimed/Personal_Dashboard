@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { styles } from "../lib/styles";
 import { getTimeLine } from "../store/features/timeline/timelineSlice";
 import AddTimeLinePopup from "../components/popus-forms/AddTimelinePopup";
-import TimelineItem from "../components/cards/TimelineItem"; 
+import TimelineItem from "../components/cards/TimeLineItem"; 
 import DeleteTimeLinePopup from "../components/popus-forms/DeleteTimeLinePopup";
 import UpdateTimeLinePopup from "../components/popus-forms/UpdateTimeLinePopup";
 
