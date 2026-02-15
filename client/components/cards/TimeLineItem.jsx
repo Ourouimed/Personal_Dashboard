@@ -6,8 +6,7 @@ const TimeLineItem = ({ item, onUpdate, onDelete }) => {
 
   return (
     <div className="group p-6 rounded-2xl bg-white border border-gray-100 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl relative overflow-hidden">
-      {/* Decorative side accent */}
-      <div className={`absolute top-0 left-0 w-1.5 h-full ${isWork ? 'bg-blue-500' : 'bg-purple-500'}`} />
+     
 
       {/* Action Buttons - Visible on Hover */}
       <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -30,7 +29,11 @@ const TimeLineItem = ({ item, onUpdate, onDelete }) => {
       <div className="flex flex-wrap justify-between items-start gap-2 mb-2 pr-16">
         <div className="space-y-1">
            <div className="flex items-center gap-2">
-             {isWork ? <Briefcase size={16} className="text-blue-500" /> : <GraduationCap size={16} className="text-purple-500" />}
+             {isWork ? <div className="bg-blue-500 p-3 rounded-md">
+              <Briefcase size={16} className="text-white" />
+              </div> : <div className="bg-purple-500 p-3 rounded-md">
+                <GraduationCap size={16} className="text-white" />
+                </div>}
              <h3 className="text-xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors">
                {title}
              </h3>

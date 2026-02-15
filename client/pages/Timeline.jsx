@@ -1,6 +1,6 @@
 import { Plus, Loader2 } from "lucide-react";
 import Popup from "../components/Popup";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { styles } from "../lib/styles";
 import { getTimeLine } from "../store/features/timeline/timelineSlice";
@@ -10,18 +10,26 @@ import DeleteTimeLinePopup from "../components/popus-forms/DeleteTimeLinePopup";
 import UpdateTimeLinePopup from "../components/popus-forms/UpdateTimeLinePopup";
 
 const Timeline = () => {
+  const dispatch = useDispatch();
+  const { isLoading, timeline } = useSelector(state => state.timeline);
+  
+  const [filter, setFilter] = useState('all'); 
+
   const [popupData, setPopupData] = useState({
     isOpen: false,
     title: null,
     content: null
   });
 
-  const dispatch = useDispatch();
-  const { isLoading, timeline } = useSelector(state => state.timeline);
-
   useEffect(() => {
     dispatch(getTimeLine());
   }, [dispatch]);
+
+  const filteredTimeline = useMemo(() => {
+    if (!timeline) return [];
+    if (filter === 'all') return timeline;
+    return timeline.filter(item => item.type?.toLowerCase() === filter.toLowerCase());
+  }, [timeline, filter]);
 
   const handleClosePopup = () => setPopupData({ isOpen: false, title: null, content: null });
 
@@ -33,24 +41,40 @@ const Timeline = () => {
     });
   };
 
+  const handleOpenDeleteTimeLinePopup = (id) => {
+    setPopupData({ isOpen: true, title: 'Delete Entry', content: <DeleteTimeLinePopup id={id} onClose={handleClosePopup} /> });
+  };
 
-  const handleOpenDeleteTimeLinePopup = (id)=>{
-    setPopupData({isOpen : true , title : 'Delete project' , content : <DeleteTimeLinePopup id={id} onClose={handleClosePopup}/>})
-  }
-  
-  
-   const handleOpenUpdateTimeLinePopup = (t)=>{
-     setPopupData({isOpen : true , title : 'Update project' , content : <UpdateTimeLinePopup onClose={handleClosePopup} timeline={t}/>})
-    } 
-  
+  const handleOpenUpdateTimeLinePopup = (t) => {
+    setPopupData({ isOpen: true, title: 'Update Entry', content: <UpdateTimeLinePopup onClose={handleClosePopup} timeline={t} /> });
+  };
 
   return (
     <div className="p-4 space-y-6">
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <h3 className="text-xl sm:text-2xl font-bold text-gray-800">Experience & Education</h3>
-        <button className={styles.button} onClick={handleOpenAddTimeLinePopup}>
-          Add Timeline <Plus size={16} />
-        </button>
+        
+        <div className="flex items-center gap-2">
+          <div className="flex bg-gray-100 p-1 rounded-lg border border-gray-200 mr-2">
+            {['all', 'work', 'education'].map((type) => (
+              <button
+                            key={type}
+                            onClick={() => setFilter(type)}
+                            className={`px-3 cursor-pointer py-1 text-xs sm:text-sm font-semibold rounded-md transition-all capitalize ${
+                                filter === type
+                                    ? "bg-white text-blue-600 shadow-sm"
+                                    : "text-gray-500 hover:text-gray-700"
+                            }`}
+                        >
+                            {type}
+                        </button>
+            ))}
+          </div>
+
+          <button className={`${styles.button} whitespace-nowrap`} onClick={handleOpenAddTimeLinePopup}>
+            Add <Plus size={16} />
+          </button>
+        </div>
       </div>
 
       {popupData.isOpen && (
@@ -64,14 +88,19 @@ const Timeline = () => {
           <Loader2 className="animate-spin mb-2" />
           <p>Fetching timeline...</p>
         </div>
-      ) : !timeline || timeline.length === 0 ? ( 
+      ) : filteredTimeline.length === 0 ? (
         <div className="text-center py-20 border-2 border-dashed rounded-xl text-gray-400">
-          No available timeline entries found.
+          No {filter !== 'all' ? filter : ''} entries found.
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {timeline.map((item) => (
-            <TimelineItem key={item._id} item={item} onDelete={()=> handleOpenDeleteTimeLinePopup(item._id)} onUpdate={()=> handleOpenUpdateTimeLinePopup(item)}/>
+        <div className="grid grid-cols-1 gap-6">
+          {filteredTimeline.map((item) => (
+            <TimelineItem 
+              key={item._id} 
+              item={item} 
+              onDelete={() => handleOpenDeleteTimeLinePopup(item._id)} 
+              onUpdate={() => handleOpenUpdateTimeLinePopup(item)}
+            />
           ))}
         </div>
       )}

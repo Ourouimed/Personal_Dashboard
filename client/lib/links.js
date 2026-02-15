@@ -1,4 +1,4 @@
-import { Briefcase, LayoutDashboard, List, Timer } from 'lucide-react'
+import { Briefcase, Check, CheckSquare, LayoutDashboard, List, Timer } from 'lucide-react'
 export const sidebar = [
     {
         name : 'Dashboard' ,
@@ -7,8 +7,8 @@ export const sidebar = [
     } ,
     {
         name : 'To do list' ,
-        icon : List ,
-        url : '/to-do'
+        icon : CheckSquare ,
+        url : '/todos'
     },
     {
         name : 'Projects' ,

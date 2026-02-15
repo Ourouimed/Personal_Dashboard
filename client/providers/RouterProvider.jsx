@@ -5,12 +5,14 @@ import Login from '../pages/Login'
 import Projects from '../pages/Projects'
 import Error404 from '../pages/Error404'
 import Timeline from '../pages/Timeline'
+import Todos from '../pages/Todos'
 const RouterProvider = ()=>{
     return <Routes>
       <Route path="/" element={<DashboardLayout/>}>
           <Route index element={<Home/>}/>
           <Route path="projects" element={<Projects/>}/>
           <Route path="timeline" element={<Timeline/>}/>
+          <Route path="todos" element={<Todos/>}/>
       </Route>
       <Route path='/login' element={<Login/>}/>
       <Route path='*' element={<Error404/>}/>

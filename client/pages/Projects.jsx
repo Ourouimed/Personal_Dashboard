@@ -40,15 +40,13 @@ const Projects = ()=>{
     }
 
     
-    return <>
+    return <div className="p-4 space-y-6">
         <div className="flex justify-between items-center">
-            <h3 className="text-xl sm:text-2xl font-semibold">My Projects</h3>
-            <button 
-                className={styles.button}
-                onClick={handleOpenAddProjectPopup}>
-                add new project <Plus size={14}/>
-            </button>
-        </div>
+        <h3 className="text-xl sm:text-2xl font-bold text-gray-800">My Projects </h3>
+        <button className={styles.button} onClick={handleOpenAddProjectPopup}>
+          Add Project <Plus size={16} />
+        </button>
+      </div>
 
         {popupData.isOpen && <Popup title={popupData.title} onClose={handleClosePopup}>
                 {popupData.content}
@@ -59,7 +57,7 @@ const Projects = ()=>{
     {projects.map((p) => <ProjectItem item={p} key={p._id} onDelete={()=> handleOpenDeleteProjectPopup(p._id)} onUpdate={()=> handleOpenUpdateProjectPopup(p)}/>)}
   </div>
 )}
-    </>
+    </div>
 }
 
 export default Projects

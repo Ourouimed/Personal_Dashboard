@@ -55,13 +55,13 @@ const UpdateTimeLinePopup = ({ timeline , onClose }) => {
         <div className="md:col-span-2 flex p-1 bg-gray-100 rounded-lg">
           <button 
             onClick={() => setTimelineInfo(p => ({...p, type: 'work'}))}
-            className={`flex-1 flex items-center justify-center gap-2 py-2 rounded-md transition-all ${timelineInfo.type === 'work' ? 'bg-white shadow-sm text-blue-600' : 'text-gray-500'}`}
+            className={`flex-1 cursor-pointer flex items-center justify-center gap-2 py-2 rounded-md transition-all ${timelineInfo.type === 'work' ? 'bg-white shadow-sm text-blue-600' : 'text-gray-500'}`}
           >
             <Briefcase size={16} /> Work
           </button>
           <button 
             onClick={() => setTimelineInfo(p => ({...p, type: 'education'}))}
-            className={`flex-1 flex items-center justify-center gap-2 py-2 rounded-md transition-all ${timelineInfo.type === 'education' ? 'bg-white shadow-sm text-blue-600' : 'text-gray-500'}`}
+            className={`flex-1 cursor-pointer flex items-center justify-center gap-2 py-2 rounded-md transition-all ${timelineInfo.type === 'education' ? 'bg-white shadow-sm text-blue-600' : 'text-gray-500'}`}
           >
             <GraduationCap size={16} /> Education
           </button>
