@@ -7,10 +7,11 @@ import connectDB from './config/db.js';
 import authRouter from './routes/Auth.js'
 import projectRouter from './routes/Projects.js'
 import timelineRouter from './routes/Timeline.js'
+import tasksRouter from './routes/Tasks.js'
 
 import corsOptions from './middlewares/corsOption.js';
 import cookieParser from 'cookie-parser';
-import User from './models/User.js';
+
 
 
 const app = express()
@@ -30,6 +31,7 @@ app.use(cookieParser())
 app.use('/api/auth' , authRouter)
 app.use('/api/projects' , projectRouter)
 app.use('/api/timeline' , timelineRouter)
+app.use('/api/tasks' , tasksRouter)
 
 
 app.get('/', (req, res) => {
