@@ -34,7 +34,7 @@ const Home = () => {
     if (tasksLoading || projectsLoading) return <p className="p-4 text-center">...loading</p>
 
     return (
-        <div className="p-4 space-y-8 max-w-7xl mx-auto">
+        <div className="space-y-8 max-w-7xl mx-auto">
             
             <div className="space-y-1">
                 <h3 className="text-xl sm:text-2xl md:text-4xl font-bold text-gray-800">Welcome back</h3>

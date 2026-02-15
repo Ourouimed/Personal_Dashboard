@@ -25,12 +25,12 @@ const DeleteProjectPopup = ({id , onClose})=>{
             Are you sure you want to delete <span className="font-semibold">{id}</span>? 
         </p>
         
-        <div className="flex items-center justify-end mt-4 gap-2">
-            <button onClick={onClose} className="py-2 px-4 text-gray-600 border cursor-pointer border-gray-300 rounded-lg font-semibold transition">
+        <div className="flex items-center justify-end mt-4 gap-2 flex-wrap">
+            <button onClick={onClose} className="text-sm py-2 px-4 text-gray-600 border cursor-pointer border-gray-300 rounded-lg font-semibold transition">
                 Cancel
             </button>
-            <button className={`${styles.button} !bg-red-500`} onClick={handledeleteProject}>
-                {isLoading ? <Loader2 size={18} className="animate-spin" /> : <Trash size={18}/>}
+            <button className={`${styles.button} !bg-red-500 text-sm`} onClick={handledeleteProject}>
+                {isLoading ? <Loader2 size={18} className="animate-spin" /> : <Trash size={14}/>}
                 {isLoading ? 'Deleting...' : 'Delete Project'} 
             </button>
         </div>

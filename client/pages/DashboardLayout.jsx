@@ -61,7 +61,7 @@ const DashboardLayout = () => {
                                    flex items-center justify-center cursor-pointer transition-colors"
                         onClick={() => setSidebarOpen(!sidebarOpen)}
                     >
-                        {/* On mobile, show X to close. On desktop, show Chevrons */}
+                        
                         <span className="md:hidden">{sidebarOpen ? <X size={18}/> : <Menu size={18}/>}</span>
                         <span className="hidden md:block">{sidebarOpen ? <ChevronLeft size={18}/> : <ChevronRight size={18}/>}</span>
                     </button>
@@ -119,7 +119,7 @@ const DashboardLayout = () => {
 
                        
                         <span className="text-gray-600 hover:text-black transition duration-300">
-                            {location.pathname.split('/')[1]}
+                            {location.pathname.split('/')[1] || 'Home'}
                         </span>
                     </div>
                 </header>

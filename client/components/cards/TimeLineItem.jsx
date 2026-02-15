@@ -28,13 +28,13 @@ const TimeLineItem = ({ item, onUpdate, onDelete }) => {
 
       <div className="flex flex-wrap justify-between items-start gap-2 mb-2 pr-16">
         <div className="space-y-1">
-           <div className="flex items-center gap-2">
+           <div className="flex items-center gap-2 flex-wrap">
              {isWork ? <div className="bg-blue-500 p-3 rounded-md">
               <Briefcase size={16} className="text-white" />
               </div> : <div className="bg-purple-500 p-3 rounded-md">
                 <GraduationCap size={16} className="text-white" />
                 </div>}
-             <h3 className="text-xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors">
+             <h3 className="text-lg sm:text-xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors">
                {title}
              </h3>
            </div>

@@ -50,11 +50,11 @@ const Timeline = () => {
   };
 
   return (
-    <div className="p-4 space-y-6">
+    <div className="space-y-8">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <h3 className="text-xl sm:text-2xl font-bold text-gray-800">Experience & Education</h3>
         
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-wrap">
           <div className="flex bg-gray-100 p-1 rounded-lg border border-gray-200 mr-2">
             {['all', 'work', 'education'].map((type) => (
               <button
@@ -71,7 +71,7 @@ const Timeline = () => {
             ))}
           </div>
 
-          <button className={`${styles.button} whitespace-nowrap`} onClick={handleOpenAddTimeLinePopup}>
+          <button className={`${styles.button} text-sm`} onClick={handleOpenAddTimeLinePopup}>
             Add <Plus size={16} />
           </button>
         </div>

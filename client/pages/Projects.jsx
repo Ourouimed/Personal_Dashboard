@@ -40,10 +40,10 @@ const Projects = ()=>{
     }
 
     
-    return <div className="p-4 space-y-6">
-        <div className="flex justify-between items-center">
+    return <div className="space-y-8">
+        <div className="flex justify-between items-center flex-wrap gap-3">
         <h3 className="text-xl sm:text-2xl font-bold text-gray-800">My Projects </h3>
-        <button className={styles.button} onClick={handleOpenAddProjectPopup}>
+        <button className={`${styles.button} text-sm`} onClick={handleOpenAddProjectPopup}>
           Add Project <Plus size={16} />
         </button>
       </div>

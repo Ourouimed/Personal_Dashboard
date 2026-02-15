@@ -47,9 +47,9 @@ const Todos = () => {
     };
 
     return (
-        <div className="p-4 space-y-6 mx-auto">
+        <div className="space-y-8">
             {/* Header & Stats */}
-            <div className="flex justify-between items-end">
+            <div className="flex justify-between items-end flex-wrap gap-3">
                 <div className="space-y-1"> 
                     <h3 className="text-xl sm:text-2xl font-bold text-gray-800">Todos</h3>
                     <p className="text-sm text-gray-500 font-medium">
@@ -75,10 +75,10 @@ const Todos = () => {
             </div>
 
             {/* Input Section */}
-            <div className="grid grid-cols-4 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-4 gap-2">
                 <input
                     type="text"
-                    className={`${styles.input} col-span-3`}
+                    className={`${styles.input} sm:col-span-3`}
                     ref={todoTextRef}
                     placeholder="What needs to be done?"
                     onKeyDown={(e) => e.key === 'Enter' && handleAddTask()}

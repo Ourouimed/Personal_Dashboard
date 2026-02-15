@@ -191,16 +191,16 @@ const UpdateProjectPopup = ({ project ,  onClose }) => {
 
       {errors.submit && <div className="p-3 bg-red-50 border border-red-200 text-red-600 text-xs rounded-lg">{errors.submit}</div>}
 
-      <div className="flex justify-end gap-3 pt-4 border-t border-gray-100">
-        <button type="button" onClick={onClose} className="py-2 px-4 text-gray-600 border cursor-pointer border-gray-300 rounded-lg font-semibold transition">
+      <div className="flex justify-end gap-3 pt-4 border-t border-gray-100 flex-wrap">
+        <button type="button" onClick={onClose} className="text-sm py-2 px-4 text-gray-600 border cursor-pointer border-gray-300 rounded-lg font-semibold transition">
           Cancel
         </button>
         <button 
             onClick={handleUpdateProject} 
             disabled={isLoading}
-            className={styles.button}
+            className={`${styles.button} text-sm`}
         >
-          {isLoading ? <Loader2 size={18} className="animate-spin" /> : <Plus size={18}/>}
+          {isLoading ? <Loader2 size={14} className="animate-spin" /> : <Plus size={14}/>}
           {isLoading ? 'Saving...' : 'Save Project'}
         </button>
       </div>

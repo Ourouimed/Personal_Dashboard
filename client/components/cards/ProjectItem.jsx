@@ -1,4 +1,4 @@
-import { ExternalLink, Github } from "lucide-react";
+import { Edit, ExternalLink, Github, Trash2 } from "lucide-react";
 import { styles } from "../../lib/styles";
 const ProjectItem = ({ item , onDelete , onUpdate}) => {
   return (
@@ -22,7 +22,7 @@ const ProjectItem = ({ item , onDelete , onUpdate}) => {
       </div>
 
       {/* Action Row: Links on left, Admin buttons on right */}
-      <div className="flex items-center justify-between mt-4">
+      <div className="flex items-center justify-between mt-4 flex-wrap gap-2">
         <div className="flex gap-3">
           {item.github && (
             <a 
@@ -48,12 +48,12 @@ const ProjectItem = ({ item , onDelete , onUpdate}) => {
           )}
         </div>
 
-        <div className="flex items-center gap-2">
-          <button className={styles.button} onClick={onUpdate}>
-            update
+        <div className="flex items-center gap-2 flex-wrap">
+          <button className={`${styles.button} text-sm`} onClick={onUpdate}>
+            <Edit size={14}/>
           </button>
-          <button className={`${styles.button} !bg-red-500 text-white`} onClick={onDelete}>
-            delete
+          <button className={`${styles.button} text-sm !bg-red-500 text-white`} onClick={onDelete}>
+            <Trash2 size={14}/>
           </button>
         </div>
       </div>
