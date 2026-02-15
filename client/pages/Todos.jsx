@@ -105,7 +105,7 @@ const Todos = () => {
                     </div>
                 ) : (
                     filteredTasks.map((t) => (
-                        <TaskItem key={t._id} t={t}/>
+                        <TaskItem key={t._id} t={t} onDelete={()=> handleDeleteTask(t._id)} onStatusChange={()=> handleChangeTaskStatus(t)}/>
                     ))
                 )}
             </div>

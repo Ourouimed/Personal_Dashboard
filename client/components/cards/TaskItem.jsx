@@ -1,12 +1,12 @@
 import { Circle, CircleCheck, Trash2 } from "lucide-react"
 
-const TaskItem = ({t})=>{
+const TaskItem = ({t , onDelete , onStatusChange})=>{
     return <div
                 className="group flex justify-between items-center p-4 hover:bg-gray-50 transition-colors"
             >
         <div
                                 className="flex items-center gap-3 cursor-pointer flex-1"
-                                onClick={() => handleChangeTaskStatus(t)}
+                                onClick={onStatusChange}
                             >
                                 <button className="transition-transform active:scale-90">
                                     {t.status === 'active' ? (
@@ -26,7 +26,7 @@ const TaskItem = ({t})=>{
                                 </h4>
                             </div>
 
-                            <button className="p-2 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-50 rounded-full" onClick={()=> handleDeleteTask(t._id)}>
+                            <button className="p-2 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-50 rounded-full" onClick={onDelete}>
                                 <Trash2 size={18} className="text-red-400 hover:text-red-600" />
                             </button>
                         </div>

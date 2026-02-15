@@ -9,6 +9,6 @@ export const store = configureStore({
         auth : authReducer ,
         projects : projectReducer,
         timeline : timelineReducer ,
-        tasks : tasksReducer
+        tasks : tasksReducer ,
     }
 })
